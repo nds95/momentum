@@ -8,6 +8,7 @@ function handleLoginBtnClick() {
         alert("input your name!");
     } else {
         console.log(`Hello, ${inputValue}`);
+        console.log(`Hello, ${inputValue}`);
     }
 }
 
