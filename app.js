@@ -1,15 +1,18 @@
+const loginForm = document.querySelector('#login-form');
 const loginInput = document.querySelector("#login-form input");
-const loginButton= document.querySelector("#login-form Button");
+const ATag = document.querySelector('body > a');
 
-function handleLoginBtnClick() {
-    let inputValue = loginInput.value;
-
-    if(inputValue === "" || inputValue === " ") {
-        alert("input your name!");
-    } else {
-        console.log(`Hello, ${inputValue}`);
-        console.log(`Hello, ${inputValue}`);
-    }
+function onLoginSubmit(event) {
+    event.preventDefault();
+    console.log(loginInput.value);
 }
 
-loginButton.addEventListener("click", handleLoginBtnClick);
+loginForm.addEventListener("submit", onLoginSubmit);
+
+function handleLinkClick(event) {
+    event.preventDefault();
+    console.log(event);
+    alert('Hello');
+}
+
+ATag.addEventListener("click", handleLinkClick);
