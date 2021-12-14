@@ -1,18 +1,27 @@
 const loginForm = document.querySelector('#login-form');
 const loginInput = document.querySelector("#login-form input");
-const ATag = document.querySelector('body > a');
+const greeting = document.querySelector("#greeting");
+
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
 
 function onLoginSubmit(event) {
     event.preventDefault();
-    console.log(loginInput.value);
+    const userName = loginInput.value;
+    localStorage.setItem(USERNAME_KEY, userName);
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    greeting.innerText = `Hello ${userName}`
+    greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
 loginForm.addEventListener("submit", onLoginSubmit);
 
-function handleLinkClick(event) {
-    event.preventDefault();
-    console.log(event);
-    alert('Hello');
-}
+const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-ATag.addEventListener("click", handleLinkClick);
+if(savedUsername === null) {
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+} else {
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+    greeting.innerText = `Hello ${savedUsername}`;
+}
